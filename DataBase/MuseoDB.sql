@@ -1,21 +1,30 @@
+-- Active: 1663029224796@@127.0.0.1@3306
 DROP DATABASE IF EXISTS MuseoDB;
 CREATE DATABASE IF NOT EXISTS MuseoDB;
 USE MuseoDB;
 
 CREATE TABLE Visitante (
-	DNI INT NOT NULL,
+	DNI_Visitante INT NOT NULL,
     Nombre VARCHAR(45) NOT NULL,
     Apellido VARCHAR(45) NOT NULL,
     Nacimiento DATE NOT NULL,
-    CONSTRAINT PK_Visitante PRIMARY KEY (DNI)
+    CONSTRAINT PK_Visitante PRIMARY KEY (DNI_Visitante)
 );
 
 CREATE TABLE Guia (
-    DNI INT NOT NULL,
+    DNI_Guia INT NOT NULL,
     Nombre VARCHAR(45) NOT NULL,
     Apellido VARCHAR(45) NOT NULL,
     Nacimiento DATE NOT NULL,
-    CONSTRAINT PK_Guia PRIMARY KEY (DNI)
+    CONSTRAINT PK_Guia PRIMARY KEY (DNI_Guia)
+);
+
+CREATE TABLE Sala (
+	ID_Sala INT NOT NULL AUTO_INCREMENT,
+    Nombre VARCHAR(45),
+    ID_Exposicion INT,
+    CONSTRAINT PK_Sala PRIMARY KEY (ID_Sala ASC),
+    CONSTRAINT FK_Sala_Exposicion FOREIGN KEY (ID_Exposicion) REFERENCES Exposicion (ID_Exposicion)
 );
 
 CREATE TABLE Exposicion (
@@ -27,13 +36,6 @@ CREATE TABLE Exposicion (
     CONSTRAINT FK_Exposicion_Sala FOREIGN KEY (ID_Sala) REFERENCES Sala (ID_Sala)
 );
 
-CREATE TABLE Sala (
-	ID_Sala INT NOT NULL AUTO_INCREMENT,
-    Nombre VARCHAR(45),
-    ID_Exposicion INT,
-    CONSTRAINT PK_Sala PRIMARY KEY (ID_Sala ASC),
-    CONSTRAINT FK_Sala_Exposicion FOREIGN KEY (ID_Exposicion) REFERENCES Exposicion (ID_Exposicion)
-);
 
 CREATE TABLE Visita (
     ID_Visita INT NOT NULL AUTO_INCREMENT,
@@ -42,8 +44,8 @@ CREATE TABLE Visita (
     ID_Sala INT,
     Fecha_Hora DATETIME,
     CONSTRAINT PK_Visita PRIMARY KEY (ID_Visita),
-    CONSTRAINT FK_Visita_Guia FOREIGN KEY (DNI_Guia) REFERENCES Guia (DNI),
-    CONSTRAINT FK_Visita_Visitante FOREIGN KEY (DNI_Visitante) REFERENCES Visita (DNI)
+    CONSTRAINT FK_Visita_Guia FOREIGN KEY (DNI_Guia) REFERENCES Guia (DNI_Guia),
+    CONSTRAINT FK_Visita_Visitante FOREIGN KEY (DNI_Visitante) REFERENCES Visita (DNI_Visitante)
 );
 
 CREATE TABLE Turno (
@@ -57,11 +59,11 @@ CREATE TABLE Turno (
 );
 
 CREATE TABLE Fundador (
-    DNI INT NOT NULL,
+    DNI_Fundador INT NOT NULL,
     Nombre VARCHAR(45) NOT NULL,
     Apellido VARCHAR(45) NOT NULL,
     Nacimiento DATE NOT NULL,
-    CONSTRAINT PK_Guia PRIMARY KEY (DNI)
+    CONSTRAINT PK_Guia PRIMARY KEY (DNI_Fundador)
 );
 
 CREATE TABLE Museo (
@@ -73,7 +75,7 @@ CREATE TABLE Museo (
     Direccion VARCHAR(45),
     CONSTRAINT PK_Museo PRIMARY KEY (ID_Museo),
     CONSTRAINT FK_Museo_Sala FOREIGN KEY (ID_Sala) REFERENCES Sala (ID_Sala), 
-    CONSTRAINT FK_Museo_Fundador FOREIGN KEY (DNI_Fundador) REFERENCES Fundador (DNI)
+    CONSTRAINT FK_Museo_Fundador FOREIGN KEY (DNI_Fundador) REFERENCES Fundador (DNI_Fundador)
 );
 
 CREATE TABLE Plano (
