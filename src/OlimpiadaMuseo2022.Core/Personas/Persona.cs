@@ -1,40 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OlimpiadaMuseo2022.Core.Personas
+namespace OlimpiadaMuseo2022.Core.Personas;
+
+public abstract class Persona
 {
-    public abstract class Persona
-    {
-        public int DNI { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public DateTime Nacimiento { get; set; }
-        public byte Edad
-        {
-            get
-            {
-                var hoy = DateOnly.FromDateTime(DateTime.Today);
-                var anios = Convert.ToByte((hoy.Year - Nacimiento.Year));
+    [StringLength(45)]
+    public string Nombre { get; set; }
 
-                if (hoy.Month < Nacimiento.Month)
-                {
-                    return --anios;
-                }
-                else if (hoy.Month == Nacimiento.Month && hoy.Day >= Nacimiento.Day)
-                {
-                    return anios;
-                }
-                else return --anios;
-            }
-        }
-        public Persona(int dni, string nombre, string apellido, DateTime nacimiento)
+    [StringLength(45)]
+    public string Apellido { get; set; }
+    public DateTime Nacimiento { get; set; }
+
+    [NotMapped]
+    public byte Edad
+    {
+        get
         {
-            DNI = dni;
-            Nombre = nombre;
-            Apellido = apellido;
-            Nacimiento = nacimiento;
+            var hoy = DateOnly.FromDateTime(DateTime.Today);
+            var anios = Convert.ToByte((hoy.Year - Nacimiento.Year));
+
+            if (hoy.Month < Nacimiento.Month)
+            {
+                return --anios;
+            }
+            else if (hoy.Month == Nacimiento.Month && hoy.Day >= Nacimiento.Day)
+            {
+                return anios;
+            }
+            else return --anios;
         }
     }
+    public Persona(string nombre, string apellido, DateTime nacimiento)
+    {
+        Nombre = nombre;
+        Apellido = apellido;
+        Nacimiento = nacimiento;
+    }
+    public Persona() { }
 }

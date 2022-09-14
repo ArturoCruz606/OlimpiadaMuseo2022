@@ -10,12 +10,12 @@ namespace OlimpiadaMuseo2022.Core.Museo
     {
         public int ID { get; set; }
         public List<Plano> Planos { get; set; }
-        public Persona Fundador { get; set; }
+        public Visitante Fundador { get; set; }
         public string Nombre { get; set; }
         public DateOnly Fundacion { get; set; }
         public string Direccion { get; set; }
         public List<Sala> Salas { get; set; }
-        public CMuseo (int id, Persona fundador, string nombre, DateOnly fundacion, string direccion) {
+        public CMuseo (int id, Visitante fundador, string nombre, DateOnly fundacion, string direccion) {
             ID = id;
             Fundador = fundador;
             Nombre = nombre;
