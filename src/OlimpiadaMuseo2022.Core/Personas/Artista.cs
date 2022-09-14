@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 using OlimpiadaMuseo2022.Core.Museo;
 
 namespace OlimpiadaMuseo2022.Core.Personas;
@@ -11,13 +8,16 @@ namespace OlimpiadaMuseo2022.Core.Personas;
 
 public class Artista : Persona
 {
+    [Key]
+    public int ID { get; set; }
     public List<Obra> Obras { get; set; }
-    public Artista(string nombre, string apellido, DateTime nacimiento)
+    public void AgregarObra (Obra obra) => Obras.Add(obra);
+    public void BorrarObra (Obra obra) => Obras.Remove(obra);
+    public Artista(int id, string nombre, string apellido, DateTime nacimiento)
     : base(nombre, apellido, nacimiento)
     {
+        ID = id;
         Obras = new List<Obra>();
     }
     public Artista() { }
-    public void AgregarObra (Obra obra) => Obras.Add(obra);
-    public void BorrarObra (Obra obra) => Obras.Remove(obra);
 }
