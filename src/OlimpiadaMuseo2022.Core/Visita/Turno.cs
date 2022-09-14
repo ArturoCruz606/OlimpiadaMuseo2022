@@ -13,5 +13,12 @@ namespace OlimpiadaMuseo2022.Core.Visita
         public Persona Guia { get; set; }
         public Persona Visitante { get; set; }
         public DateTime FechaHora { get; set; }
+        public Turno(int id, Persona guia, Persona visitante, DateTime fechahora)
+        {
+            ID = id;
+            Guia = guia;
+            Visitante = visitante;
+            FechaHora = fechahora;
+        }
     }
 }

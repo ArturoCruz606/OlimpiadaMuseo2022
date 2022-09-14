@@ -29,5 +29,12 @@ namespace OlimpiadaMuseo2022.Core.Personas
                 else return --anios;
             }
         }
+        public Persona(int dni, string nombre, string apellido, DateTime nacimiento)
+        {
+            DNI = dni;
+            Nombre = nombre;
+            Apellido = apellido;
+            Nacimiento = nacimiento;
+        }
     }
 }
