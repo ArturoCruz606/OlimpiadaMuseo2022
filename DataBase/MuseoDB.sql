@@ -63,11 +63,12 @@ CREATE TABLE Sala (
 );
 
 CREATE TABLE Exposicion (
-    ID_Exposicion INT NOT NULL,
+    ID_Exposicion INT NOT NULL AUTO_INCREMENT,
     ID_Sala INT,
     Nombre VARCHAR(45),
     CONSTRAINT PK_Exposicion PRIMARY KEY (ID_Exposicion),
     CONSTRAINT FK_Exposicion_Sala FOREIGN KEY (ID_Sala) REFERENCES Sala (ID_Sala)
+
 );
 
 CREATE TABLE Obra (
