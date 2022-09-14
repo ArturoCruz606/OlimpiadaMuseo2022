@@ -28,5 +28,5 @@ namespace OlimpiadaMuseo2022.Core.Museo
         public void BorrarPlano (Plano plano) => Planos.Remove(plano);
         public void AgregarSala (Sala sala) => Salas.Add(sala);
         public void BorrarSala (Sala sala) => Salas.Remove(sala);
-    }
+    } 
 }
