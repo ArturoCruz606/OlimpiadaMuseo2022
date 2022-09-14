@@ -10,10 +10,6 @@ public class CMuseo
     [Key]
     public int ID { get; set; }
     public List<Plano> Planos { get; set; }
-    public int IdFundador { get; set; }
-
-    [ForeignKey("IdFundador")]
-    public Persona Fundador { get; set; }
 
     [StringLength(45)]
     public string Nombre { get; set; }
@@ -22,9 +18,8 @@ public class CMuseo
     [StringLength(45)]
     public string Direccion { get; set; }
     public List<Sala> Salas { get; set; }
-    public CMuseo (int id, Visitante fundador, string nombre, DateOnly fundacion, string direccion) {
+    public CMuseo (int id, string nombre, DateOnly fundacion, string direccion) {
         ID = id;
-        Fundador = fundador;
         Nombre = nombre;
         Fundacion = fundacion;
         Direccion = direccion;

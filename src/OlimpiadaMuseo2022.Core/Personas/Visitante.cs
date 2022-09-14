@@ -6,8 +6,10 @@ namespace OlimpiadaMuseo2022.Core.Personas;
 [Table("Visitante")]
 public class Visitante : Persona
 {
+    [Key]
+    public int DNI { get; set; }
     public Visitante(int dni, string nombre, string apellido, DateTime nacimiento)
-        : base(dni, nombre, apellido, nacimiento)
-            => ID = dni;
+        : base(nombre, apellido, nacimiento)
+            => DNI = dni;
     public Visitante() { }
 }
