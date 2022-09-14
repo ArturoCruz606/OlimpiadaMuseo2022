@@ -6,7 +6,7 @@ namespace OlimpiadaMuseo2022.Core;
 
 public class Contexto : DbContext
 {
-    DbSet<Visitante> Personas { get; set; }
+    DbSet<Visitante> Visitantes { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder ob)
     {
         if (!ob.IsConfigured)

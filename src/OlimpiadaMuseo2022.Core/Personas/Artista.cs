@@ -17,6 +17,7 @@ public class Artista : Persona
     {
         Obras = new List<Obra>();
     }
+    public Artista() { }
     public void AgregarObra (Obra obra) => Obras.Add(obra);
     public void BorrarObra (Obra obra) => Obras.Remove(obra);
 }
