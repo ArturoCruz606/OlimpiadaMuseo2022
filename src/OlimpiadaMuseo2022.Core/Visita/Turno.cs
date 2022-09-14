@@ -7,13 +7,11 @@ using OlimpiadaMuseo2022.Core.Personas;
 
 namespace OlimpiadaMuseo2022.Core.Visita
 {
-    public class Visita
+    public class Turno
     {
         public int ID { get; set; }
-        public Museo Museo { get; set; }
         public Persona Guia { get; set; }
-        public List<Persona> Visitantes { get; set; }
-        public List<Sala> Salas { get; set; }
+        public Persona Visitante { get; set; }
         public DateTime FechaHora { get; set; }
     }
 }
