@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OlimpiadaMuseo2022.Core.Museo;
 
-[Table("Exposicion")]
+[Table("Sala")]
 
 public class Sala
 {
     [Key]
     public int ID { get; set; }
-
-    [NotMapped]
+    public int IdMuseo { get; set; }
+    [ForeignKey("IdMuseo")]
     public CMuseo Museo { get; set; }
 
     [StringLength(45)]

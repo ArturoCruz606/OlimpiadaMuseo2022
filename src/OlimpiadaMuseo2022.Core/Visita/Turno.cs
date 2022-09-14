@@ -11,14 +11,14 @@ public class Turno
     public int IdVisita { get; set; }
 
     [ForeignKey("IdVisita")]
-    public Visita Visita { get; set; }
+    public CVisita Visita { get; set; }
 
     public int IdVisitante { get; set; }
 
     [ForeignKey("IdVisitante")]
     public Visitante Visitante { get; set; }
     public DateTime FechaHora { get; set; }
-    public Turno(int id, Visita visita, Visitante visitante, DateTime fechahora)
+    public Turno(int id, CVisita visita, Visitante visitante, DateTime fechahora)
     {
         ID = id;
         Visita = visita;
