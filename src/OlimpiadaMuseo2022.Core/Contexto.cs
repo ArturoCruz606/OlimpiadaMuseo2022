@@ -12,7 +12,7 @@ public class Contexto : DbContext
     DbSet<Artista> Artistas { get; set; }
     DbSet<Turno> Turnos { get; set; }
     DbSet<CVisita> Visitas { get; set; }
-    DbSet<CMuseo> Museos { get; set; }
+    public DbSet<CMuseo> Museos { get; set; }
     DbSet<Sala> Salas { get; set; }
     DbSet<Exposicion> Exposiciones { get; set; }
     DbSet<Obra> Obras { get; set; }
